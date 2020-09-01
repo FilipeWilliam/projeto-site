@@ -1,48 +1,28 @@
-const activeClass = 'ativo';
-
-export default function initTabNav() {
-  const tabMenuPicture = document.querySelectorAll("[data-tab='menuPicture'] li");
-
-  const tabContentPicture = document.querySelectorAll(
-    "[data-tab='contentPicture'] section",
-  );
-  tabContentPicture[0].classList.add(activeClass);
-
-  const tabMenuDesenhos = document.querySelectorAll(
-    "[data-tab='menuDesenhos'] li",
-  );
-  const tabContentDesenhos = document.querySelectorAll(
-    "[data-tab='contentDesenhos'] section",
-  );
-  tabContentDesenhos[0].classList.add('ativo');
-
-  function activeTabPicture(index) {
-    tabContentPicture.forEach((section) => {
-      section.classList.remove(activeClass);
-    });
-    const direcao = tabContentDesenhos[index].dataset.anime;
-    tabContentPicture[index].classList.add(activeClass, direcao);
+export default class TabNav {
+  constructor(menu, content) {
+    this.tabMenu = document.querySelectorAll(menu);
+    this.tabContent = document.querySelectorAll(content);
+    this.activeClass = 'ativo';
   }
 
-  function activeTabDesenhos(index) {
-    tabContentDesenhos.forEach((section) => {
-      section.classList.remove('ativo');
+  activeTab(index) {
+    this.tabContent.forEach((section) => {
+      section.classList.remove(this.activeClass);
     });
-    const direcao = tabContentDesenhos[index].dataset.anime;
-    tabContentDesenhos[index].classList.add('ativo', direcao);
+    const direcao = this.tabContent[index].dataset.anime;
+    this.tabContent[index].classList.add(this.activeClass, direcao);
   }
 
-  if (tabMenuPicture.length && tabContentPicture.length) {
-    tabMenuPicture.forEach((itemMenu, index) => {
-      itemMenu.addEventListener('click', () => {
-        activeTabPicture(index);
-      });
+  addTabNavEvent() {
+    this.tabMenu.forEach((itemMenu, index) => {
+      itemMenu.addEventListener('click', () => this.activeTab(index));
     });
+  }
 
-    tabMenuDesenhos.forEach((itemMenu, index) => {
-      itemMenu.addEventListener('click', () => {
-        activeTabDesenhos(index);
-      });
-    });
+  init() {
+    if (this.tabMenu.length && this.tabContent.length) {
+      this.activeTab(0);
+      this.addTabNavEvent();
+    }
   }
 }
