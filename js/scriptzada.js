@@ -2,7 +2,7 @@ import ScrollSuave from './modules/scroll-suave.js';
 import initScrollAnimation from './modules/scroll-animation.js';
 import Accordion from './modules/accordion.js';
 import TabNav from './modules/initTab.js';
-import initModal from './modal/modal.js';
+import Modal from './modules/modal.js';
 import initToolTip from './modules/toolTip.js';
 import initDropDownMenu from './modules/dropDownMenu.js';
 import initMenuMobile from './modules/menuMobile.js';
@@ -21,8 +21,10 @@ const tabNavDesenhos = new TabNav("[data-tab='menuDesenhos'] li", "[data-tab='co
 tabNavPictures.init();
 tabNavDesenhos.init();
 
+const modal = new Modal("[data-modal='abrir']", "[data-modal='fechar']", "[data-modal='container']");
+modal.init();
+
 initScrollAnimation();
-initModal();
 initToolTip();
 initDropDownMenu();
 initMenuMobile();
