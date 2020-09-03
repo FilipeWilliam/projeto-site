@@ -251,13 +251,12 @@ body {
 }
 
 .fa {
-  padding: 30px;
-  font-size: 30px;
-  width: 40px;
+  display: block;
+  padding: 0 50px;
   text-align: center;
   text-decoration: none;
   margin: 5px 2px;
-  border-radius: 60%;
+  border-radius: 50%;
 }
 
 .fa-facebook {
