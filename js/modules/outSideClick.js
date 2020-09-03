@@ -18,6 +18,6 @@ export default function outSideClick(element, events, callBack) {
         html.addEventListener(userEvent, handleOutSideClick);
       });
     });
-    element.setAttribute(outside);
+    element.setAttribute(outside, '');
   }
 }
