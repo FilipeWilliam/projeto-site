@@ -5,7 +5,7 @@ import TabNav from './modules/initTab.js';
 import Modal from './modules/modal.js';
 import ToolTip from './modules/toolTip.js';
 import DropDownMenu from './modules/dropDownMenu.js';
-import initMenuMobile from './modules/menuMobile.js';
+import MenuMobile from './modules/menuMobile.js';
 import initFuncionamento from './modules/funcionamento.js';
 import fetchAnimais from './modules/fetch-animais.js';
 import fetchBitcoin from './modules/fetch-bitcoin.js';
@@ -33,7 +33,9 @@ scrollAnima.init();
 const dropDownMenu = new DropDownMenu('[data-dropDown]');
 dropDownMenu.init();
 
-initMenuMobile();
+const menuMobile = new MenuMobile('[data-menu="button"', '[data-menu="lista"');
+menuMobile.init();
+
 initFuncionamento();
 
 fetchAnimais('../../animaisapi.json', '.numeros-grid');
